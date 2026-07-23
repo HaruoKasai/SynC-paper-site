@@ -38,7 +38,6 @@ export default function Home() {
         <div className="navLinks">
           <a href="#code">Code</a>
           <a href="/statistical-tests">Statistics</a>
-          <a href="#citation">Citation</a>
         </div>
       </nav>
 
@@ -106,21 +105,6 @@ export default function Home() {
               <a href="/python-code">Python scripts →</a>
             </div>
           </div>
-        </div>
-      </section>
-
-      <section className="citation" id="citation">
-        <p className="sectionLabel">Citation and access</p>
-        <div>
-          <h2>Publication details will be added when available.</h2>
-          <a
-            className="repoLink"
-            href="https://github.com/tkssawada/SynC"
-            target="_blank"
-            rel="noreferrer"
-          >
-            tkssawada/SynC on GitHub ↗
-          </a>
         </div>
       </section>
 
