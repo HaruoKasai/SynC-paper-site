@@ -227,12 +227,6 @@ dd {
   line-height: 1.5;
 }
 
-.scriptPlaceholder {
-  color: var(--muted);
-  font-family: var(--font-geist-mono), monospace;
-  font-size: 0.78rem;
-}
-
 dd a {
   text-underline-offset: 3px;
 }
@@ -264,6 +258,109 @@ dd a:focus-visible {
   text-underline-offset: 4px;
 }
 
+.detailLink {
+  font-weight: 590;
+}
+
+.subpageHero,
+.testCatalogue,
+.scriptCatalogue,
+.repositoryCallout {
+  width: min(1080px, calc(100% - 48px));
+  margin: 0 auto;
+}
+
+.subpageHero {
+  padding: 88px 0 72px;
+}
+
+.subpageHero h1 {
+  max-width: 880px;
+  font-size: clamp(2.8rem, 5.8vw, 5.6rem);
+}
+
+.testCatalogue,
+.scriptCatalogue {
+  padding: 0 0 76px;
+}
+
+.testCard,
+.scriptCard {
+  padding: 38px;
+  border: 1px solid var(--line);
+  background: var(--white);
+}
+
+.testCard h2,
+.scriptCard h2 {
+  margin-top: 14px;
+}
+
+.testCard dl {
+  margin: 34px 0 28px;
+  border-top: 1px solid var(--line);
+}
+
+.testCard dl > div {
+  display: grid;
+  grid-template-columns: 180px 1fr;
+  gap: 28px;
+  padding: 18px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.testCard dd {
+  color: var(--muted);
+  font-weight: 450;
+  line-height: 1.55;
+  text-align: left;
+}
+
+.scriptCard {
+  display: grid;
+  grid-template-columns: 1.25fr 0.75fr;
+  gap: 60px;
+}
+
+.scriptCard p:not(.sectionLabel) {
+  max-width: 650px;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+.filePanel {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  justify-content: center;
+  gap: 12px;
+  padding: 26px;
+  border-left: 1px solid var(--line);
+}
+
+.filePanel > span:first-child {
+  color: var(--muted);
+  font-size: 0.8rem;
+}
+
+.filePanel strong {
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 0.9rem;
+}
+
+.repositoryCallout {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 40px;
+  padding: 68px 0;
+  border-top: 1px solid var(--line);
+}
+
+.repositoryCallout h2 {
+  margin-top: 15px;
+}
+
 footer {
   min-height: 104px;
   display: flex;
@@ -274,12 +371,20 @@ footer {
   font-size: 0.8rem;
 }
 
+footer a {
+  text-underline-offset: 3px;
+}
+
 @media (max-width: 760px) {
   .nav,
   .hero,
   .codeSection,
   .statistics,
   .citation,
+  .subpageHero,
+  .testCatalogue,
+  .scriptCatalogue,
+  .repositoryCallout,
   footer {
     width: min(100% - 32px, 1080px);
   }
@@ -331,6 +436,28 @@ footer {
 
   .testDetails {
     align-items: flex-start;
+  }
+
+  .testCard,
+  .scriptCard {
+    padding: 26px;
+  }
+
+  .testCard dl > div,
+  .scriptCard {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .filePanel {
+    margin-top: 18px;
+    border-top: 1px solid var(--line);
+    border-left: 0;
+  }
+
+  .repositoryCallout {
+    align-items: flex-start;
+    flex-direction: column;
   }
 
   footer {

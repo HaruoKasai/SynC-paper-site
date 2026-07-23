@@ -123,13 +123,12 @@ export default function Home() {
             <div>
               <dt>Statistical tests</dt>
               <dd className="testDetails">
-                <span>
-                  Explanations of the statistical procedures used in the
-                  manuscript will be listed here.
-                </span>
-                <span className="scriptPlaceholder">
-                  Corresponding Python scripts will be added with each test.
-                </span>
+                <a className="detailLink" href="/statistical-tests">
+                  Read test descriptions →
+                </a>
+                <a className="detailLink" href="/python-code">
+                  View Python scripts →
+                </a>
               </dd>
             </div>
           </dl>
