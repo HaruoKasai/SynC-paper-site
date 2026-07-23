@@ -1,0 +1,364 @@
+@import "tailwindcss";
+
+:root {
+  --paper: #f7f5ef;
+  --ink: #172027;
+  --muted: #607078;
+  --line: #d8ddd9;
+  --accent: #a51f68;
+  --accent-soft: #f0dbe7;
+  --white: #fffefa;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
+}
+
+a {
+  color: inherit;
+}
+
+main {
+  min-height: 100vh;
+}
+
+.nav,
+.hero,
+.overview,
+.findings,
+.takeaway,
+.resources,
+footer {
+  width: min(1120px, calc(100% - 48px));
+  margin: 0 auto;
+}
+
+.nav {
+  min-height: 76px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--line);
+}
+
+.brand {
+  font-size: 1.2rem;
+  font-weight: 760;
+  letter-spacing: -0.03em;
+  text-decoration: none;
+}
+
+.navLinks {
+  display: flex;
+  gap: 28px;
+}
+
+.navLinks a {
+  color: var(--muted);
+  font-size: 0.9rem;
+  text-decoration: none;
+}
+
+.navLinks a:hover,
+.navLinks a:focus-visible {
+  color: var(--accent);
+}
+
+.hero {
+  padding: 110px 0 96px;
+}
+
+.eyebrow,
+.sectionLabel {
+  color: var(--accent);
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 0.76rem;
+  font-weight: 650;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+}
+
+h1 {
+  max-width: 1000px;
+  margin: 25px 0 32px;
+  font-size: clamp(3rem, 6.3vw, 6.7rem);
+  font-weight: 610;
+  letter-spacing: -0.065em;
+  line-height: 0.98;
+}
+
+.lead {
+  max-width: 760px;
+  margin: 0;
+  color: #33434b;
+  font-size: clamp(1.15rem, 2vw, 1.55rem);
+  line-height: 1.55;
+}
+
+.authors {
+  margin: 30px 0 0;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+.authors span {
+  font-style: italic;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 38px;
+}
+
+.button {
+  min-height: 46px;
+  display: inline-flex;
+  align-items: center;
+  padding: 0 18px;
+  border-radius: 999px;
+  font-size: 0.9rem;
+  font-weight: 620;
+  text-decoration: none;
+}
+
+.button.primary {
+  background: var(--ink);
+  color: var(--white);
+}
+
+.button.primary:hover,
+.button.primary:focus-visible {
+  background: var(--accent);
+}
+
+.button.quiet {
+  border: 1px solid var(--line);
+  color: var(--muted);
+}
+
+.overview,
+.findings,
+.takeaway,
+.resources {
+  padding: 88px 0;
+  border-top: 1px solid var(--line);
+}
+
+.overviewGrid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(300px, 0.75fr);
+  gap: 84px;
+  margin-top: 28px;
+}
+
+h2 {
+  margin: 0;
+  font-size: clamp(2rem, 4vw, 3.7rem);
+  font-weight: 580;
+  letter-spacing: -0.045em;
+  line-height: 1.08;
+}
+
+.overviewCopy p,
+.finding p {
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+.overviewCopy p:first-child {
+  margin-top: 4px;
+}
+
+.findingGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1px;
+  margin-top: 30px;
+  background: var(--line);
+  border: 1px solid var(--line);
+}
+
+.finding {
+  min-height: 300px;
+  padding: 34px;
+  background: var(--white);
+}
+
+.finding > span {
+  color: var(--accent);
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 0.74rem;
+}
+
+.finding h3 {
+  max-width: 430px;
+  margin: 55px 0 14px;
+  font-size: 1.5rem;
+  font-weight: 610;
+  letter-spacing: -0.025em;
+}
+
+.finding p {
+  max-width: 490px;
+  margin: 0;
+}
+
+.takeaway {
+  display: grid;
+  grid-template-columns: 0.45fr 1.55fr;
+  gap: 60px;
+}
+
+blockquote {
+  margin: 0;
+  color: var(--accent);
+  font-size: clamp(2rem, 4vw, 4.2rem);
+  font-weight: 560;
+  letter-spacing: -0.045em;
+  line-height: 1.1;
+}
+
+.resources {
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  gap: 84px;
+}
+
+.resources h2 {
+  max-width: 480px;
+  margin-top: 22px;
+}
+
+.resourceList {
+  border-top: 1px solid var(--line);
+}
+
+.resourceList a,
+.resourceList > div {
+  min-height: 88px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 28px;
+  border-bottom: 1px solid var(--line);
+  text-decoration: none;
+}
+
+.resourceList a:hover strong,
+.resourceList a:focus-visible strong {
+  color: var(--accent);
+}
+
+.resourceList span {
+  color: var(--muted);
+  font-size: 0.88rem;
+}
+
+.resourceList strong {
+  text-align: right;
+  font-size: 0.95rem;
+  font-weight: 610;
+}
+
+footer {
+  min-height: 104px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1px solid var(--line);
+  color: var(--muted);
+  font-size: 0.8rem;
+}
+
+@media (max-width: 760px) {
+  .nav,
+  .hero,
+  .overview,
+  .findings,
+  .takeaway,
+  .resources,
+  footer {
+    width: min(100% - 32px, 1120px);
+  }
+
+  .navLinks {
+    gap: 14px;
+  }
+
+  .navLinks a {
+    font-size: 0.78rem;
+  }
+
+  .hero {
+    padding: 78px 0 72px;
+  }
+
+  h1 {
+    font-size: clamp(2.8rem, 13vw, 4.6rem);
+  }
+
+  .overview,
+  .findings,
+  .takeaway,
+  .resources {
+    padding: 64px 0;
+  }
+
+  .overviewGrid,
+  .takeaway,
+  .resources {
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
+
+  .findingGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .finding {
+    min-height: 260px;
+    padding: 28px;
+  }
+
+  .finding h3 {
+    margin-top: 40px;
+  }
+
+  .resourceList a,
+  .resourceList > div {
+    align-items: flex-start;
+    flex-direction: column;
+    justify-content: center;
+    gap: 8px;
+  }
+
+  .resourceList strong {
+    text-align: left;
+  }
+
+  footer {
+    align-items: flex-start;
+    flex-direction: column;
+    justify-content: center;
+    gap: 8px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
