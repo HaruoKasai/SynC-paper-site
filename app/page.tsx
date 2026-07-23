@@ -109,7 +109,16 @@ export default function Home() {
           <dl>
             <div>
               <dt>Analysis software</dt>
-              <dd>To be added</dd>
+              <dd>
+                EEG analysis ·{" "}
+                <a
+                  href="https://github.com/tkssawada/SynC"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  tkssawada/SynC ↗
+                </a>
+              </dd>
             </div>
             <div>
               <dt>Statistical tests</dt>

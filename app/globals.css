@@ -218,6 +218,15 @@ dd {
   text-align: right;
 }
 
+dd a {
+  text-underline-offset: 3px;
+}
+
+dd a:hover,
+dd a:focus-visible {
+  color: var(--accent);
+}
+
 .statisticsCopy .note {
   margin-top: 24px;
   font-size: 0.9rem;
