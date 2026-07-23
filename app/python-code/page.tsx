@@ -66,6 +66,9 @@ export default function PythonCodePage() {
                 <a href={`/data/${script.input}`} download>
                   Download input CSV
                 </a>
+                <a href="/docs/README_Fig5_permutation.md" download>
+                  Download README
+                </a>
               </div>
             </div>
           </article>

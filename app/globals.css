@@ -284,7 +284,8 @@ dd a:focus-visible {
 .subpageHero,
 .testCatalogue,
 .scriptCatalogue,
-.repositoryCallout {
+.repositoryCallout,
+.methodArticle {
   width: min(1080px, calc(100% - 48px));
   margin: 0 auto;
 }
@@ -399,6 +400,75 @@ dd a:focus-visible {
   margin-top: 15px;
 }
 
+.methodArticle {
+  padding-bottom: 76px;
+}
+
+.methodArticle > section {
+  padding: 52px 0;
+  border-top: 1px solid var(--line);
+}
+
+.methodArticle h2 {
+  max-width: 780px;
+}
+
+.methodArticle h3 {
+  margin: 34px 0 12px;
+  font-size: 1.12rem;
+}
+
+.methodArticle p,
+.methodArticle li {
+  max-width: 800px;
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+.methodArticle ol {
+  padding-left: 24px;
+}
+
+.methodGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1px;
+  margin: 30px 0;
+  border: 1px solid var(--line);
+  background: var(--line);
+}
+
+.methodGrid > div {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  gap: 8px;
+  padding: 22px;
+  background: var(--white);
+}
+
+.methodGrid span {
+  color: var(--muted);
+  font-size: 0.82rem;
+}
+
+.equation {
+  max-width: 800px;
+  margin: 16px 0;
+  padding: 18px 22px;
+  border-left: 3px solid var(--accent);
+  background: var(--white);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 1.15rem;
+}
+
+.articleLinks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  margin-top: 28px;
+}
+
 footer {
   min-height: 104px;
   display: flex;
@@ -423,6 +493,7 @@ footer a {
   .testCatalogue,
   .scriptCatalogue,
   .repositoryCallout,
+  .methodArticle,
   footer {
     width: min(100% - 32px, 1080px);
   }
@@ -500,6 +571,10 @@ footer a {
   .repositoryCallout {
     align-items: flex-start;
     flex-direction: column;
+  }
+
+  .methodGrid {
+    grid-template-columns: 1fr;
   }
 
   footer {
