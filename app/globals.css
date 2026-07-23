@@ -181,6 +181,25 @@ h2 {
   line-height: 1.55;
 }
 
+.codeActions {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: flex-end;
+  flex-direction: column;
+  gap: 9px;
+}
+
+.codeActions a {
+  font-size: 0.88rem;
+  font-weight: 590;
+  text-underline-offset: 3px;
+}
+
+.codeActions a:hover,
+.codeActions a:focus-visible {
+  color: var(--accent);
+}
+
 .status {
   flex: 0 0 auto;
   padding: 7px 10px;
@@ -423,6 +442,10 @@ footer a {
     align-items: flex-start;
     flex-direction: column;
     gap: 14px;
+  }
+
+  .codeActions {
+    align-items: flex-start;
   }
 
   .statisticsCopy dl > div {

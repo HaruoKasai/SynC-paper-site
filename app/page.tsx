@@ -11,7 +11,7 @@ const codeItems = [
     title: "EEG analysis",
     description:
       "Scripts used for processing and analysing electrophysiological recordings.",
-    status: "Available",
+    status: "tkssawada/SynC ↗",
     href: "https://github.com/tkssawada/SynC",
   },
   {
@@ -37,7 +37,7 @@ export default function Home() {
         </a>
         <div className="navLinks">
           <a href="#code">Code</a>
-          <a href="#statistics">Statistics</a>
+          <a href="/statistical-tests">Statistics</a>
           <a href="#citation">Citation</a>
         </div>
       </nav>
@@ -93,49 +93,19 @@ export default function Home() {
               <div key={item.title}>{content}</div>
             );
           })}
-        </div>
-      </section>
-
-      <section className="statistics" id="statistics">
-        <div>
-          <p className="sectionLabel">Statistical methods</p>
-          <h2>A concise statistical record</h2>
-        </div>
-        <div className="statisticsCopy">
-          <p>
-            This section will provide the statistical tests, sample definitions,
-            software, and reporting conventions used in the manuscript.
-          </p>
-          <dl>
+          <div className="statisticalItem">
             <div>
-              <dt>Analysis software</dt>
-              <dd>
-                EEG analysis ·{" "}
-                <a
-                  href="https://github.com/tkssawada/SynC"
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  tkssawada/SynC ↗
-                </a>
-              </dd>
+              <h3>Statistical analysis</h3>
+              <p>
+                Descriptions of the statistical tests and the corresponding
+                Python scripts used in the manuscript.
+              </p>
             </div>
-            <div>
-              <dt>Statistical tests</dt>
-              <dd className="testDetails">
-                <a className="detailLink" href="/statistical-tests">
-                  Read test descriptions →
-                </a>
-                <a className="detailLink" href="/python-code">
-                  View Python scripts →
-                </a>
-              </dd>
+            <div className="codeActions">
+              <a href="/statistical-tests">Test descriptions →</a>
+              <a href="/python-code">Python scripts →</a>
             </div>
-          </dl>
-          <p className="note">
-            Figure-specific notes can be added later where they materially help
-            readers reproduce an analysis.
-          </p>
+          </div>
         </div>
       </section>
 
