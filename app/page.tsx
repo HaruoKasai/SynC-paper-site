@@ -122,15 +122,15 @@ export default function Home() {
             </div>
             <div>
               <dt>Statistical tests</dt>
-              <dd>To be added</dd>
-            </div>
-            <div>
-              <dt>Sample-size definition</dt>
-              <dd>To be added</dd>
-            </div>
-            <div>
-              <dt>Multiple comparisons</dt>
-              <dd>To be added</dd>
+              <dd className="testDetails">
+                <span>
+                  Explanations of the statistical procedures used in the
+                  manuscript will be listed here.
+                </span>
+                <span className="scriptPlaceholder">
+                  Corresponding Python scripts will be added with each test.
+                </span>
+              </dd>
             </div>
           </dl>
           <p className="note">

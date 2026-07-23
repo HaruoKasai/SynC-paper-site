@@ -218,6 +218,21 @@ dd {
   text-align: right;
 }
 
+.testDetails {
+  display: flex;
+  align-items: flex-end;
+  flex-direction: column;
+  gap: 8px;
+  font-weight: 480;
+  line-height: 1.5;
+}
+
+.scriptPlaceholder {
+  color: var(--muted);
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 0.78rem;
+}
+
 dd a {
   text-underline-offset: 3px;
 }
@@ -312,6 +327,10 @@ footer {
 
   dd {
     text-align: left;
+  }
+
+  .testDetails {
+    align-items: flex-start;
   }
 
   footer {
