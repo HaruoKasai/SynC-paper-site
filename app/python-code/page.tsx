@@ -8,10 +8,13 @@ export const metadata: Metadata = {
 
 const scripts = [
   {
-    name: "Statistical test script",
-    file: "Python file to be added",
+    id: "fig5-permutation",
+    label: "Figure 5",
+    name: "Paired exact sign-flip permutation test",
+    file: "Fig5_Permutation_test.py",
     description:
-      "This entry will contain the script, required inputs, expected output, and a link to the related test description.",
+      "Reproduces the n = 10 Fig. 5 analysis for firing rate, Spearman pairwise correlation, normalised participation ratio, and normalised PC50 in immobile and mobile periods.",
+    input: "Fig5_permutation_input_N10.csv",
   },
 ];
 
@@ -40,16 +43,30 @@ export default function PythonCodePage() {
 
       <section className="scriptCatalogue" aria-label="Python scripts">
         {scripts.map((script, index) => (
-          <article className="scriptCard" key={`${script.name}-${index}`}>
+          <article className="scriptCard" id={script.id} key={script.id}>
             <div>
-              <p className="sectionLabel">Script {index + 1}</p>
+              <p className="sectionLabel">{script.label}</p>
               <h2>{script.name}</h2>
               <p>{script.description}</p>
+              <a
+                className="repoLink"
+                href={`/statistical-tests#${script.id}`}
+              >
+                Read the test description →
+              </a>
             </div>
             <div className="filePanel">
-              <span>File</span>
+              <span>Files</span>
               <strong>{script.file}</strong>
-              <span className="status">In preparation</span>
+              <strong>{script.input}</strong>
+              <div className="fileLinks">
+                <a href={`/code/${script.file}`} download>
+                  Download Python
+                </a>
+                <a href={`/data/${script.input}`} download>
+                  Download input CSV
+                </a>
+              </div>
             </div>
           </article>
         ))}

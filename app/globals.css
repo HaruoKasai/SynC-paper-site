@@ -367,6 +367,25 @@ dd a:focus-visible {
   font-size: 0.9rem;
 }
 
+.fileLinks {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.fileLinks a {
+  font-size: 0.86rem;
+  font-weight: 620;
+  text-underline-offset: 3px;
+}
+
+.fileLinks a:hover,
+.fileLinks a:focus-visible {
+  color: var(--accent);
+}
+
 .repositoryCallout {
   display: flex;
   align-items: flex-end;
