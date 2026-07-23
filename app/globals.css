@@ -6,7 +6,6 @@
   --muted: #607078;
   --line: #d8ddd9;
   --accent: #a51f68;
-  --accent-soft: #f0dbe7;
   --white: #fffefa;
 }
 
@@ -35,12 +34,11 @@ main {
 
 .nav,
 .hero,
-.overview,
-.findings,
-.takeaway,
-.resources,
+.codeSection,
+.statistics,
+.citation,
 footer {
-  width: min(1120px, calc(100% - 48px));
+  width: min(1080px, calc(100% - 48px));
   margin: 0 auto;
 }
 
@@ -71,12 +69,14 @@ footer {
 }
 
 .navLinks a:hover,
-.navLinks a:focus-visible {
+.navLinks a:focus-visible,
+.repoLink:hover,
+.repoLink:focus-visible {
   color: var(--accent);
 }
 
 .hero {
-  padding: 110px 0 96px;
+  padding: 96px 0 82px;
 }
 
 .eyebrow,
@@ -90,24 +90,24 @@ footer {
 }
 
 h1 {
-  max-width: 1000px;
-  margin: 25px 0 32px;
-  font-size: clamp(3rem, 6.3vw, 6.7rem);
+  max-width: 940px;
+  margin: 24px 0 28px;
+  font-size: clamp(2.8rem, 5.5vw, 5.8rem);
   font-weight: 610;
-  letter-spacing: -0.065em;
-  line-height: 0.98;
+  letter-spacing: -0.06em;
+  line-height: 1;
 }
 
 .lead {
-  max-width: 760px;
+  max-width: 720px;
   margin: 0;
   color: #33434b;
-  font-size: clamp(1.15rem, 2vw, 1.55rem);
-  line-height: 1.55;
+  font-size: clamp(1.1rem, 1.7vw, 1.35rem);
+  line-height: 1.6;
 }
 
 .authors {
-  margin: 30px 0 0;
+  margin: 28px 0 0;
   color: var(--muted);
   font-size: 0.95rem;
 }
@@ -116,161 +116,128 @@ h1 {
   font-style: italic;
 }
 
-.actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
-  margin-top: 38px;
-}
-
-.button {
-  min-height: 46px;
-  display: inline-flex;
-  align-items: center;
-  padding: 0 18px;
-  border-radius: 999px;
-  font-size: 0.9rem;
-  font-weight: 620;
-  text-decoration: none;
-}
-
-.button.primary {
-  background: var(--ink);
-  color: var(--white);
-}
-
-.button.primary:hover,
-.button.primary:focus-visible {
-  background: var(--accent);
-}
-
-.button.quiet {
-  border: 1px solid var(--line);
-  color: var(--muted);
-}
-
-.overview,
-.findings,
-.takeaway,
-.resources {
-  padding: 88px 0;
+.codeSection,
+.statistics,
+.citation {
+  padding: 76px 0;
   border-top: 1px solid var(--line);
 }
 
-.overviewGrid {
+.sectionIntro,
+.statistics,
+.citation {
   display: grid;
-  grid-template-columns: minmax(0, 1.05fr) minmax(300px, 0.75fr);
-  gap: 84px;
-  margin-top: 28px;
+  grid-template-columns: minmax(250px, 0.75fr) minmax(0, 1.25fr);
+  gap: 72px;
 }
 
 h2 {
-  margin: 0;
-  font-size: clamp(2rem, 4vw, 3.7rem);
-  font-weight: 580;
-  letter-spacing: -0.045em;
-  line-height: 1.08;
+  margin: 18px 0 0;
+  font-size: clamp(1.8rem, 3.4vw, 3rem);
+  font-weight: 590;
+  letter-spacing: -0.04em;
+  line-height: 1.1;
 }
 
-.overviewCopy p,
-.finding p {
+.sectionIntro > p:last-child,
+.statisticsCopy > p {
+  margin: 4px 0 0;
   color: var(--muted);
   line-height: 1.7;
 }
 
-.overviewCopy p:first-child {
-  margin-top: 4px;
-}
-
-.findingGrid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 1px;
-  margin-top: 30px;
-  background: var(--line);
-  border: 1px solid var(--line);
-}
-
-.finding {
-  min-height: 300px;
-  padding: 34px;
-  background: var(--white);
-}
-
-.finding > span {
-  color: var(--accent);
-  font-family: var(--font-geist-mono), monospace;
-  font-size: 0.74rem;
-}
-
-.finding h3 {
-  max-width: 430px;
-  margin: 55px 0 14px;
-  font-size: 1.5rem;
-  font-weight: 610;
-  letter-spacing: -0.025em;
-}
-
-.finding p {
-  max-width: 490px;
-  margin: 0;
-}
-
-.takeaway {
-  display: grid;
-  grid-template-columns: 0.45fr 1.55fr;
-  gap: 60px;
-}
-
-blockquote {
-  margin: 0;
-  color: var(--accent);
-  font-size: clamp(2rem, 4vw, 4.2rem);
-  font-weight: 560;
-  letter-spacing: -0.045em;
-  line-height: 1.1;
-}
-
-.resources {
-  display: grid;
-  grid-template-columns: 0.9fr 1.1fr;
-  gap: 84px;
-}
-
-.resources h2 {
-  max-width: 480px;
-  margin-top: 22px;
-}
-
-.resourceList {
+.codeList {
+  margin-top: 42px;
   border-top: 1px solid var(--line);
 }
 
-.resourceList a,
-.resourceList > div {
-  min-height: 88px;
+.codeList > a,
+.codeList > div {
+  min-height: 126px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 28px;
+  gap: 36px;
+  padding: 24px 0;
   border-bottom: 1px solid var(--line);
   text-decoration: none;
 }
 
-.resourceList a:hover strong,
-.resourceList a:focus-visible strong {
+.codeList > a:hover h3,
+.codeList > a:focus-visible h3 {
   color: var(--accent);
 }
 
-.resourceList span {
-  color: var(--muted);
-  font-size: 0.88rem;
+.codeList h3 {
+  margin: 0 0 8px;
+  font-size: 1.25rem;
+  font-weight: 620;
 }
 
-.resourceList strong {
+.codeList p {
+  max-width: 670px;
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.55;
+}
+
+.status {
+  flex: 0 0 auto;
+  padding: 7px 10px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  color: var(--muted);
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 0.72rem;
+}
+
+.statistics h2 {
+  max-width: 430px;
+}
+
+.statisticsCopy dl {
+  margin: 32px 0 0;
+  border-top: 1px solid var(--line);
+}
+
+.statisticsCopy dl > div {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  padding: 17px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+dt {
+  color: var(--muted);
+}
+
+dd {
+  margin: 0;
+  font-weight: 590;
   text-align: right;
-  font-size: 0.95rem;
-  font-weight: 610;
+}
+
+.statisticsCopy .note {
+  margin-top: 24px;
+  font-size: 0.9rem;
+}
+
+.citation > div {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.citation h2 {
+  max-width: 650px;
+  margin: 0;
+}
+
+.repoLink {
+  font-weight: 620;
+  text-underline-offset: 4px;
 }
 
 footer {
@@ -286,12 +253,11 @@ footer {
 @media (max-width: 760px) {
   .nav,
   .hero,
-  .overview,
-  .findings,
-  .takeaway,
-  .resources,
+  .codeSection,
+  .statistics,
+  .citation,
   footer {
-    width: min(100% - 32px, 1120px);
+    width: min(100% - 32px, 1080px);
   }
 
   .navLinks {
@@ -303,49 +269,39 @@ footer {
   }
 
   .hero {
-    padding: 78px 0 72px;
+    padding: 72px 0 62px;
   }
 
   h1 {
-    font-size: clamp(2.8rem, 13vw, 4.6rem);
+    font-size: clamp(2.65rem, 12vw, 4.3rem);
   }
 
-  .overview,
-  .findings,
-  .takeaway,
-  .resources {
-    padding: 64px 0;
+  .codeSection,
+  .statistics,
+  .citation {
+    padding: 58px 0;
   }
 
-  .overviewGrid,
-  .takeaway,
-  .resources {
+  .sectionIntro,
+  .statistics,
+  .citation {
     grid-template-columns: 1fr;
-    gap: 36px;
+    gap: 32px;
   }
 
-  .findingGrid {
-    grid-template-columns: 1fr;
-  }
-
-  .finding {
-    min-height: 260px;
-    padding: 28px;
-  }
-
-  .finding h3 {
-    margin-top: 40px;
-  }
-
-  .resourceList a,
-  .resourceList > div {
+  .codeList > a,
+  .codeList > div {
     align-items: flex-start;
     flex-direction: column;
-    justify-content: center;
-    gap: 8px;
+    gap: 14px;
   }
 
-  .resourceList strong {
+  .statisticsCopy dl > div {
+    grid-template-columns: 1fr;
+    gap: 6px;
+  }
+
+  dd {
     text-align: left;
   }
 
