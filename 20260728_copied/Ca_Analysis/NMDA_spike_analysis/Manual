@@ -1,0 +1,12 @@
+step.1 use "01_Extract_spine_shaft_rois.py" to selected spine and its shaft.
+    choose the Plane0 folder in mouse/_GCaMP/suite2p
+
+step.2
+    In the plan0_roi.json,
+    writes the time column
+
+step.3 use 02_spine_spike_events_detection.py to analyze each mouse NMDA-spike data.
+    choose the plane0_roi_traces.csv in mouse/_GCaMP/suite2p generated from step.1
+
+step.4 group analysis by 03_group_comparation.py
+    choose the folder contained all mouse. data will generate in the _summary folder.
