@@ -47,6 +47,13 @@ export default function BehaviouralAnalysisPage() {
         <div className="navLinks">
           <a href="/">Home</a>
           <a href="/python-code">Statistical code</a>
+          <a
+            href="https://github.com/HaruoKasai/SynC-paper-site"
+            target="_blank"
+            rel="noreferrer"
+          >
+            GitHub repository ↗
+          </a>
         </div>
       </nav>
 

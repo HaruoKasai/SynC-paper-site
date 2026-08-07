@@ -28,6 +28,13 @@ export default function PythonCodePage() {
         <div className="navLinks">
           <a href="/">Home</a>
           <a href="/statistical-tests">Test descriptions</a>
+          <a
+            href="https://github.com/HaruoKasai/SynC-paper-site"
+            target="_blank"
+            rel="noreferrer"
+          >
+            GitHub repository ↗
+          </a>
         </div>
       </nav>
 

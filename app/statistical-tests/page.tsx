@@ -16,6 +16,13 @@ export default function StatisticalTestsPage() {
         <div className="navLinks">
           <a href="/">Home</a>
           <a href="/python-code">Python code</a>
+          <a
+            href="https://github.com/HaruoKasai/SynC-paper-site"
+            target="_blank"
+            rel="noreferrer"
+          >
+            GitHub repository ↗
+          </a>
         </div>
       </nav>
 
