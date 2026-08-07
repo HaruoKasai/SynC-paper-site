@@ -1,0 +1,5 @@
+# _Group_analysis/.gitignore
+# 忽略本文件夹下所有输出产物，只保留配置 JSON
+*
+!.gitignore
+!*.json

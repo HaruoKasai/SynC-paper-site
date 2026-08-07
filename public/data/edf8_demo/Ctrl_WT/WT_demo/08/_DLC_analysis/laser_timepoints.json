@@ -1,0 +1,24 @@
+{
+  "Laser": {
+    "up-left": [
+      68.2,
+      116.2
+    ],
+    "down-left": [
+      68.2,
+      396.5
+    ],
+    "up-right": [
+      312.8,
+      116.2
+    ],
+    "down-right": [
+      312.8,
+      396.5
+    ],
+    "up-left-time": [[3438, 3591]],
+    "down-left-time": [[3195, 3398]],
+    "up-right-time": [],
+    "down-right-time": []
+  }
+}

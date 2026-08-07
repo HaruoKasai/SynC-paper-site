@@ -1,0 +1,44 @@
+{
+  "Laser": {
+    "up-left": [
+      68.9,
+      111.8
+    ],
+    "down-left": [
+      68.9,
+      399.8
+    ],
+    "up-right": [
+      316.8,
+      111.8
+    ],
+    "down-right": [
+      316.8,
+      399.8
+    ],
+    "up-left-time": [
+      [
+        2153,
+        2359
+      ]
+    ],
+    "down-left-time": [],
+    "up-right-time": [],
+    "down-right-time": []
+  },
+  "food": {
+    "location": [
+      [
+        166,
+        184
+      ]
+    ],
+    "food-time": [
+      [
+        15547,
+        17347
+      ]
+    ],
+    "duration": [[31]]
+  }
+}
