@@ -23,8 +23,9 @@ const codeItems = [
   {
     title: "Behavioural analysis",
     description:
-      "Scripts used to quantify behavioural state and task performance will be added here.",
-    status: "In preparation",
+      "Python workflows for food-approach and laser-response analyses using DeepLabCut-derived tracking data.",
+    status: "View code →",
+    href: "/behavioural-analysis",
   },
 ];
 
