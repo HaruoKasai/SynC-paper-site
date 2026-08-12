@@ -13,12 +13,26 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://sync-paper-analysis.hkasaimd.chatgpt.site"),
   title: {
-    default: "SynC Research Project",
+    default: "SynC | Analysis resources",
     template: "%s",
   },
   description:
-    "A concise research site for SynC and the online role of rapid associative spine enlargement in cognitive function and stable wakefulness.",
+    "Statistical methods, frozen source tables, and analysis code supporting the SynC manuscript.",
+  openGraph: {
+    title: "SynC analysis resources",
+    description:
+      "Statistical methods, frozen source tables, and analysis code supporting the SynC manuscript.",
+    type: "website",
+    siteName: "SynC analysis resources",
+  },
+  twitter: {
+    card: "summary",
+    title: "SynC analysis resources",
+    description:
+      "Statistical methods, frozen source tables, and analysis code supporting the SynC manuscript.",
+  },
 };
 
 export default function RootLayout({

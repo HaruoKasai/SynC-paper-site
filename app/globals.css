@@ -28,6 +28,22 @@ a {
   color: inherit;
 }
 
+.skipLink {
+  position: fixed;
+  z-index: 20;
+  top: 12px;
+  left: 12px;
+  padding: 10px 14px;
+  background: var(--ink);
+  color: var(--white);
+  text-decoration: none;
+  transform: translateY(-180%);
+}
+
+.skipLink:focus {
+  transform: translateY(0);
+}
+
 main {
   min-height: 100vh;
 }
@@ -342,6 +358,10 @@ dd a:focus-visible {
   gap: 60px;
 }
 
+.scriptCard + .scriptCard {
+  margin-top: 20px;
+}
+
 .scriptCard p:not(.sectionLabel) {
   max-width: 650px;
   color: var(--muted);
@@ -378,6 +398,32 @@ dd a:focus-visible {
 .filePanel strong {
   font-family: var(--font-geist-mono), monospace;
   font-size: 0.9rem;
+  overflow-wrap: anywhere;
+}
+
+.downloadFile {
+  width: 100%;
+  padding: 0 0 14px;
+  border-bottom: 1px solid var(--line);
+}
+
+.downloadFile:last-child {
+  padding-bottom: 0;
+  border-bottom: 0;
+}
+
+.downloadFile a {
+  display: inline-block;
+  margin-top: 5px;
+  color: var(--muted);
+  font-size: 0.8rem;
+  font-weight: 620;
+  text-underline-offset: 3px;
+}
+
+.downloadFile a:hover,
+.downloadFile a:focus-visible {
+  color: var(--accent);
 }
 
 .fileLinks {
@@ -421,6 +467,11 @@ dd a:focus-visible {
 
 .methodArticle {
   padding-bottom: 76px;
+  scroll-margin-top: 24px;
+}
+
+.methodArticle + .methodArticle {
+  padding-top: 18px;
 }
 
 .methodArticle > section {
@@ -488,6 +539,46 @@ dd a:focus-visible {
   margin-top: 28px;
 }
 
+.resultTable {
+  max-width: 900px;
+  margin: 30px 0 10px;
+  border-top: 1px solid var(--line);
+}
+
+.resultRow {
+  display: grid;
+  grid-template-columns: minmax(0, 1.55fr) minmax(80px, 0.35fr) minmax(0, 0.7fr);
+  gap: 20px;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--line);
+  color: var(--muted);
+  line-height: 1.45;
+}
+
+.resultRowTwo {
+  grid-template-columns: minmax(0, 1.55fr) minmax(80px, 0.35fr);
+}
+
+.resultHeader {
+  color: var(--ink);
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.resultRow strong {
+  color: var(--ink);
+  font-family: var(--font-geist-mono), monospace;
+}
+
+.methodNote {
+  margin-top: 28px;
+  padding: 18px 22px;
+  border-left: 3px solid var(--accent);
+  background: var(--white);
+}
+
 footer {
   min-height: 104px;
   display: flex;
@@ -518,6 +609,8 @@ footer a {
   }
 
   .navLinks {
+    flex-wrap: wrap;
+    justify-content: flex-end;
     gap: 14px;
   }
 
@@ -594,6 +687,35 @@ footer a {
 
   .methodGrid {
     grid-template-columns: 1fr;
+  }
+
+  .resultRow,
+  .resultRowTwo {
+    grid-template-columns: 1fr;
+    gap: 5px;
+  }
+
+  .resultHeader {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+
+  .resultRow > [role="cell"]::before {
+    display: block;
+    margin-bottom: 2px;
+    color: var(--muted);
+    content: attr(data-label);
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
   }
 
   footer {

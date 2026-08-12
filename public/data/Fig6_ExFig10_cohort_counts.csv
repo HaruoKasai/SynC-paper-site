@@ -1,0 +1,15 @@
+group,role,n_spines,n_fovs,n_mice
+SynC 0-60,neighbor,52,14,4
+SynC 0-60,stim,55,16,5
+SynC 60-180,neighbor,100,26,4
+SynC 60-180,stim,115,33,5
+SynC before,neighbor,102,26,4
+SynC before,stim,110,30,5
+WT,neighbor,95,24,2
+WT,stim,82,24,2
+dGAP 0-60,neighbor,35,9,3
+dGAP 0-60,stim,54,14,4
+dGAP 60-180,neighbor,77,20,3
+dGAP 60-180,stim,70,20,3
+dGAP before,neighbor,62,16,3
+dGAP before,stim,79,21,4

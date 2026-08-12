@@ -1,38 +1,61 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Statistical test descriptions | SynC",
+  title: "Statistical analyses | SynC",
   description:
-    "Descriptions of statistical procedures used in the SynC manuscript.",
+    "Statistical procedures and reproducibility files supporting the SynC manuscript.",
 };
+
+const deltaVResults = [
+  ["SynC -A/C vs +A/C 0-60 min", "0.0488", "Primary, unadjusted"],
+  [
+    "SynC +A/C 60-180 min vs +A/C 0-60 min",
+    "0.0059",
+    "Secondary, unadjusted",
+  ],
+  [
+    "dGAP -A/C vs +A/C 0-60 min",
+    "0.7620",
+    "Descriptive, unadjusted",
+  ],
+  [
+    "dGAP +A/C 60-180 min vs +A/C 0-60 min",
+    "0.4814",
+    "Descriptive, unadjusted",
+  ],
+];
+
+const permissiveResults = [
+  ["SynC -A/C vs +A/C 0-60 min", "1.0 x 10^-4"],
+  ["SynC +A/C 60-180 min vs +A/C 0-60 min", "1.0 x 10^-4"],
+  ["dGAP -A/C vs +A/C 0-60 min", "0.5854"],
+  ["dGAP +A/C 60-180 min vs +A/C 0-60 min", "0.9039"],
+];
 
 export default function StatisticalTestsPage() {
   return (
-    <main>
+    <main id="main-content">
+      <a className="skipLink" href="#main-content">
+        Skip to content
+      </a>
       <nav className="nav" aria-label="Page navigation">
-        <a className="brand" href="/">
+        <Link className="brand" href="/">
           SynC
-        </a>
+        </Link>
         <div className="navLinks">
-          <a href="/">Home</a>
-          <a href="/python-code">Python code</a>
-          <a
-            href="https://github.com/HaruoKasai/SynC-paper-site"
-            target="_blank"
-            rel="noreferrer"
-          >
-            GitHub repository ↗
-          </a>
+          <Link href="/">Home</Link>
+          <Link href="/python-code">Python code</Link>
+          <Link href="/behavioural-analysis">Behavioural analysis</Link>
         </div>
       </nav>
 
       <header className="subpageHero">
-        <p className="eyebrow">Figure 5 · Statistical methods</p>
-        <h1>Population-activity and permutation analysis</h1>
+        <p className="eyebrow">Statistical methods</p>
+        <h1>Analysis definitions and reproducibility records</h1>
         <p className="lead">
-          This analysis quantifies neuronal activity rate, pairwise population
-          coordination, and population dimensionality across behavioural states
-          and time periods surrounding A/C administration.
+          Prespecified endpoints, sampling units, statistical models, and
+          downloadable source tables used for the SynC manuscript.
         </p>
       </header>
 
@@ -143,9 +166,170 @@ export default function StatisticalTestsPage() {
         </section>
       </article>
 
+      <article
+        className="methodArticle"
+        id="fig6-spine-analysis"
+        aria-label="Figure 6 and Extended Data Figure 10 spine analysis"
+      >
+        <section>
+          <p className="sectionLabel">Figure 6 · Analysis cohort</p>
+          <h2>In vivo stimulated-spine enlargement</h2>
+          <p>
+            The frozen source package contains 1,088 ROI-level endpoints. The
+            primary continuous endpoint is the mean volume change from 40 to
+            80 s after stimulation. FOVs, rather than individual spines, are
+            equally weighted in the group summaries and bootstrap model.
+          </p>
+          <div className="methodGrid">
+            <div>
+              <span>Stimulated</span>
+              <strong>565 spines · 158 FOVs · 11 mice</strong>
+            </div>
+            <div>
+              <span>Neighbouring</span>
+              <strong>523 spines · 135 FOVs · 9 mice</strong>
+            </div>
+            <div>
+              <span>Primary endpoint</span>
+              <strong>Mean ΔV, 40-80 s</strong>
+            </div>
+          </div>
+        </section>
+
+        <section>
+          <p className="sectionLabel">Figure 6 · Image quantification</p>
+          <h2>Response-blind brightness correction</h2>
+          <p>
+            Spine-head fluorescence was locally background-subtracted and
+            corrected for field-wide and local intensity fluctuations using an
+            equal-weight combination of ROI-external global and local reference
+            signals from the same FOV. The correction pipeline was applied
+            identically to all ROIs and conditions; genotype, drug condition,
+            ROI role, and response magnitude were not inputs during its
+            application.
+          </p>
+          <p>
+            No ROI-response-derived early rescue was used for the primary
+            40-80-s endpoint. ΔV was normalised to the prestimulation baseline.
+            Measurements acquired during optical stimulation from 0 to 4 s
+            were omitted because of stimulation artefacts. The displayed time
+            courses use non-overlapping 10-s, 4-s, or 2-s bins according to the
+            plotted range; endpoint estimation and testing use retained
+            unbinned measurements.
+          </p>
+        </section>
+
+        <section>
+          <p className="sectionLabel">Figure 6g · Continuous endpoint</p>
+          <h2>Two-sided FOV-level parametric bootstrap</h2>
+          <p>
+            Mean ΔV from 40 to 80 s was first averaged within each FOV. Group
+            contrasts were assessed with a two-sided heteroscedastic Normal
+            parametric bootstrap of equally weighted FOV means with a
+            mouse-level random intercept (10,000 replicates). Heteroscedastic
+            indicates that residual variance was estimated separately for each
+            group.
+          </p>
+          <p>
+            The prespecified SynC -A/C versus 0-60-min contrast is the single
+            primary comparison. The recovery SynC contrast is secondary and
+            reported without multiplicity adjustment. dGAP comparisons are
+            two-sided descriptive controls.
+          </p>
+          <div className="resultTable" role="table" aria-label="Figure 6g P values">
+            <div className="resultRow resultHeader" role="row">
+              <span role="columnheader">Contrast</span>
+              <span role="columnheader">P</span>
+              <span role="columnheader">Policy</span>
+            </div>
+            {deltaVResults.map(([contrast, pValue, policy]) => (
+              <div className="resultRow" role="row" key={contrast}>
+                <span role="cell" data-label="Contrast">{contrast}</span>
+                <strong role="cell" data-label="P">{pValue}</strong>
+                <span role="cell" data-label="Policy">{policy}</span>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <section>
+          <p className="sectionLabel">Figure 6h · Permissive fraction</p>
+          <h2>Normal-Exponential mixture and fixed-posterior comparison</h2>
+          <p>
+            A zero-centred Normal null distribution was estimated from all
+            pooled neighbouring spines (σ = 9.374%). The positive latent
+            component was an Exponential distribution with scale θ = 34.429%;
+            after convolution with Normal measurement noise, it defines the
+            positive-response density. The positive-component fraction π was
+            estimated separately for each condition.
+          </p>
+          <p>
+            Spine-level posterior permissive probabilities from this frozen
+            joint model were averaged within FOV. These FOV means were compared
+            with the same two-sided parametric-bootstrap structure used for the
+            continuous endpoint, while the fitted mixture parameters and
+            spine-level posterior probabilities were held fixed.
+          </p>
+          <div className="resultTable" role="table" aria-label="Figure 6h P values">
+            <div className="resultRow resultRowTwo resultHeader" role="row">
+              <span role="columnheader">Contrast</span>
+              <span role="columnheader">P</span>
+            </div>
+            {permissiveResults.map(([contrast, pValue]) => (
+              <div className="resultRow resultRowTwo" role="row" key={contrast}>
+                <span role="cell" data-label="Contrast">{contrast}</span>
+                <strong role="cell" data-label="P">{pValue}</strong>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <section>
+          <p className="sectionLabel">Extended Data Figure 10</p>
+          <h2>Distributional display</h2>
+          <p>
+            The selected figure uses one-percentile percentograms: variable-width
+            bins containing approximately equal numbers of observations, with
+            density calculated as count divided by sample size and bin width.
+            This display makes the positive tail visible on a logarithmic axis.
+            Percentograms are used only for visualisation; mixture fitting,
+            posterior calculation, and hypothesis tests use unbinned spine-level
+            endpoints.
+          </p>
+        </section>
+
+        <section>
+          <p className="sectionLabel">Figure 6 / Extended Data Figure 10 · Files</p>
+          <h2>Frozen source and reproducibility package</h2>
+          <p>
+            Public CSVs omit local filesystem paths and replace original mouse,
+            FOV, and spine labels with stable opaque aliases. The
+            aliases preserve the analysis hierarchy while keeping the private
+            correspondence table outside the distributed package. Every
+            endpoint, FOV assignment, posterior probability, model parameter,
+            and reported test result needed to audit the figures is retained.
+          </p>
+          <div className="articleLinks">
+            <a className="repoLink" href="/python-code#fig6-bootstrap">
+              Fig. 6 bootstrap code →
+            </a>
+            <a className="repoLink" href="/python-code#exfig10-mixture">
+              Mixture audit code →
+            </a>
+            <a
+              className="repoLink"
+              href="/docs/README_Fig6_ExFig10.md"
+              download
+            >
+              Download full README
+            </a>
+          </div>
+        </section>
+      </article>
+
       <footer>
         <span>SynC statistical methods</span>
-        <a href="/">Back to analysis resources</a>
+        <Link href="/">Back to analysis resources</Link>
       </footer>
     </main>
   );

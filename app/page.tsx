@@ -17,8 +17,9 @@ const codeItems = [
   {
     title: "Imaging analysis",
     description:
-      "Code used for calcium-imaging and spine-analysis workflows will be organised here.",
-    status: "In preparation",
+      "Methods, frozen source tables, and Python code for the in vivo spine analyses in Fig. 6 and Extended Data Fig. 10.",
+    status: "View Fig. 6 resources →",
+    href: "/statistical-tests#fig6-spine-analysis",
   },
   {
     title: "Behavioural analysis",
@@ -31,7 +32,10 @@ const codeItems = [
 
 export default function Home() {
   return (
-    <main>
+    <main id="main-content">
+      <a className="skipLink" href="#main-content">
+        Skip to content
+      </a>
       <nav className="nav" aria-label="Primary navigation">
         <a className="brand" href="#top">
           SynC
@@ -39,13 +43,7 @@ export default function Home() {
         <div className="navLinks">
           <a href="#code">Code</a>
           <a href="/statistical-tests">Statistics</a>
-          <a
-            href="https://github.com/HaruoKasai/SynC-paper-site"
-            target="_blank"
-            rel="noreferrer"
-          >
-            GitHub repository ↗
-          </a>
+          <a href="/python-code">Python code</a>
         </div>
       </nav>
 
@@ -87,17 +85,20 @@ export default function Home() {
               </>
             );
 
-            return item.href ? (
+            if (!item.href) {
+              return <div key={item.title}>{content}</div>;
+            }
+
+            const isExternal = item.href.startsWith("http");
+            return (
               <a
                 href={item.href}
-                target="_blank"
-                rel="noreferrer"
+                target={isExternal ? "_blank" : undefined}
+                rel={isExternal ? "noreferrer" : undefined}
                 key={item.title}
               >
                 {content}
               </a>
-            ) : (
-              <div key={item.title}>{content}</div>
             );
           })}
           <div className="statisticalItem">
