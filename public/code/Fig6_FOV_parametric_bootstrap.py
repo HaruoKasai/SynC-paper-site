@@ -3,6 +3,11 @@
 
 The input contains one equally weighted row per FOV. The SynC comparisons use
 a heteroscedastic Normal parametric bootstrap with a mouse random intercept.
+For the permissive endpoint, each input row is the within-FOV mean of fixed
+spine posterior scores calculated with a common prior mixture fraction. The
+bootstrap generates FOV-level values; it does not regenerate individual spine
+responses from the mixture distribution or refit the mixture model.
+
 The prespecified before-vs-acute contrast and the recovery SynC contrast are
 reported without multiplicity adjustment. dGAP contrasts are descriptive
 two-sided comparisons. WT remains in the shared source table used for Extended

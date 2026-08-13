@@ -139,16 +139,23 @@ test("publishes the frozen Fig. 6 and Extended Data Fig. 10 package", async () =
   assert.match(testCsv, /0\.0058994100589941/);
   assert.match(testCsv, /0\.762023797620238/);
   assert.match(testCsv, /0\.48135186481351866/);
-  assert.match(testCsv, /0\.5854414558544145/);
-  assert.match(testCsv, /0\.9039096090390961/);
+  assert.match(testCsv, /0\.004899510048995101/);
+  assert.match(testCsv, /0\.0143985601439856/);
+  assert.match(testCsv, /0\.7952204779522047/);
+  assert.match(testCsv, /0\.8823117688231177/);
   assert.doesNotMatch(testCsv, /wt_vs_sync_before/);
   assert.doesNotMatch(testCsv, /sync_before_vs_60_180/);
   assert.match(methodsPage, /mouse-level random intercept/);
+  assert.match(
+    methodsPage,
+    /Individual spine\s+responses were not regenerated/,
+  );
   assert.match(methodsPage, /Percentograms are used only for visualisation/);
   assert.doesNotMatch(methodsPage, /WT versus SynC -A\/C uses/);
   assert.doesNotMatch(methodsPage, /0\.3810|0\.1905/);
   assert.match(codePage, /Fig6_FOV_parametric_bootstrap\.py/);
   assert.match(parameters, /pi_WT/);
+  assert.match(parameters, /common_pi_sensitivity/);
   assert.match(methodsReadme, /WT rows and the frozen `pi_WT` parameter remain/);
   assert.doesNotMatch(methodsReadme, /100,000|0\.0517/);
 });

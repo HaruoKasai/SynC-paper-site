@@ -39,7 +39,7 @@ const scripts = [
     label: "Figure 6g",
     name: "FOV-level parametric bootstrap",
     description:
-      "Recomputes the adopted 10,000-replicate, two-sided comparisons of FOV mean ΔV and fixed-posterior permissive fractions, including the mouse random intercept and the documented primary/secondary policy.",
+      "Recomputes the adopted 10,000-replicate, two-sided comparisons of FOV mean ΔV and common-prior FOV-mean posterior scores, including the mouse random intercept and the documented primary/secondary policy.",
     files: [
       {
         name: "Fig6_FOV_parametric_bootstrap.py",

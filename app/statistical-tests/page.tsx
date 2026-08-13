@@ -27,10 +27,10 @@ const deltaVResults = [
 ];
 
 const permissiveResults = [
-  ["SynC -A/C vs +A/C 0-60 min", "1.0 x 10^-4"],
-  ["SynC +A/C 60-180 min vs +A/C 0-60 min", "1.0 x 10^-4"],
-  ["dGAP -A/C vs +A/C 0-60 min", "0.5854"],
-  ["dGAP +A/C 60-180 min vs +A/C 0-60 min", "0.9039"],
+  ["SynC -A/C vs +A/C 0-60 min", "0.0049"],
+  ["SynC +A/C 60-180 min vs +A/C 0-60 min", "0.0144"],
+  ["dGAP -A/C vs +A/C 0-60 min", "0.7952"],
+  ["dGAP +A/C 60-180 min vs +A/C 0-60 min", "0.8823"],
 ];
 
 export default function StatisticalTestsPage() {
@@ -254,7 +254,7 @@ export default function StatisticalTestsPage() {
 
         <section>
           <p className="sectionLabel">Figure 6h · Permissive fraction</p>
-          <h2>Normal-Exponential mixture and fixed-posterior comparison</h2>
+          <h2>Normal-Exponential mixture and common-prior posterior comparison</h2>
           <p>
             A zero-centred Normal null distribution was estimated from all
             pooled neighbouring spines (σ = 9.374%). The positive latent
@@ -264,11 +264,17 @@ export default function StatisticalTestsPage() {
             estimated separately for each condition.
           </p>
           <p>
-            Spine-level posterior permissive probabilities from this frozen
-            joint model were averaged within FOV. These FOV means were compared
-            with the same two-sided parametric-bootstrap structure used for the
-            continuous endpoint, while the fitted mixture parameters and
-            spine-level posterior probabilities were held fixed.
+            For the condition-independent sensitivity analysis in Figure 6h,
+            spine-level posterior scores were recalculated with a common prior
+            mixture fraction (π = 0.242) and averaged within FOV. The test then
+            generated FOV-level values from a heteroscedastic Normal model with
+            a mouse-level random intercept, using the same two-sided parametric-
+            bootstrap structure as the continuous endpoint. Individual spine
+            responses were not regenerated from the mixture distribution, and
+            the mixture model and posterior scores were held fixed during the
+            bootstrap. The bars show condition-specific model-estimated
+            permissive fractions; their statistical annotations report this
+            separate common-prior sensitivity analysis.
           </p>
           <div className="resultTable" role="table" aria-label="Figure 6h P values">
             <div className="resultRow resultRowTwo resultHeader" role="row">
@@ -292,9 +298,9 @@ export default function StatisticalTestsPage() {
             bins containing approximately equal numbers of observations, with
             density calculated as count divided by sample size and bin width.
             This display makes the positive tail visible on a logarithmic axis.
-            Percentograms are used only for visualisation; mixture fitting,
-            posterior calculation, and hypothesis tests use unbinned spine-level
-            endpoints.
+            Percentograms are used only for visualisation. Mixture fitting and
+            posterior calculation use unbinned spine-level endpoints, whereas
+            between-condition inference uses FOV-averaged posterior scores.
           </p>
         </section>
 

@@ -107,6 +107,7 @@ def main() -> None:
     if not np.isclose(shape, 1.0, atol=1.0e-12):
         raise ValueError("This audit expects Gamma shape = 1 (Exponential).")
     theta = float(parameters["gamma_scale_theta_percent"])
+    common_pi = float(parameters["common_pi_sensitivity"])
     pi_by_group = _parameter_map(parameters)
 
     stim = data.loc[data["role"].eq("stim")].copy()
@@ -115,6 +116,11 @@ def main() -> None:
     null_density, positive_density = _densities(values, sigma, theta)
     stim["normal_density"] = null_density
     stim["normal_convolved_exponential_density"] = positive_density
+    stim["common_prior_posterior"] = _posterior(
+        common_pi,
+        null_density,
+        positive_density,
+    )
 
     recalculated = np.empty(len(stim), dtype=float)
     summaries: list[dict[str, float | int | str]] = []
@@ -134,6 +140,9 @@ def main() -> None:
                     group_null, group_positive
                 ),
                 "mean_recalculated_posterior": float(group_posterior.mean()),
+                "mean_common_prior_posterior": float(
+                    stim.loc[indices, "common_prior_posterior"].mean()
+                ),
             }
         )
 
@@ -152,6 +161,17 @@ def main() -> None:
     pd.DataFrame(summaries).sort_values("group").to_csv(args.output, index=False)
     spine_output = args.output.with_name(f"{args.output.stem}_spines.csv")
     stim.to_csv(spine_output, index=False)
+    fov_output = args.output.with_name(
+        f"{args.output.stem}_common_prior_fov.csv"
+    )
+    (
+        stim.groupby(["group", "mouse_id", "fov_id"], as_index=False)
+        .agg(
+            n_spines=("spine_id", "size"),
+            permissive_fraction=("common_prior_posterior", "mean"),
+        )
+        .to_csv(fov_output, index=False)
+    )
     print(pd.DataFrame(summaries).sort_values("group").to_string(index=False))
     print(f"Maximum posterior absolute difference: {max_difference:.6g}")
 

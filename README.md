@@ -11,7 +11,8 @@ reproducible Python scripts supporting the SynC manuscript.
   weighted FOV means with a two-sided heteroscedastic Normal parametric
   bootstrap and mouse-level random intercept.
 - **Figure 6h / Extended Data Figure 10:** Normal-Exponential mixture model,
-  frozen posterior permissive probabilities, and distributional audit.
+  condition-specific mixture fractions, common-prior FOV-mean posterior-score
+  sensitivity analysis, and distributional audit.
 
 The website provides method summaries under `/statistical-tests` and direct
 downloads under `/python-code`. Analysis-specific provenance and execution

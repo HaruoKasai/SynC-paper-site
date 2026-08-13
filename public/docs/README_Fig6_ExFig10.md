@@ -24,8 +24,10 @@ SHA-256 hashes of the internal frozen inputs are:
 The public CSVs exclude local filesystem paths and redundant internal columns.
 Original mouse, FOV, and spine labels are replaced by stable opaque aliases.
 These aliases preserve the mouse/FOV/spine hierarchy across files, but the
-private correspondence table is not distributed. Endpoint values, posterior
-probabilities, and group mixture fractions are unchanged.
+private correspondence table is not distributed. Endpoint values,
+condition-specific posterior probabilities, and group mixture fractions are
+unchanged. The Fig. 6h FOV table additionally contains the documented
+common-prior posterior-score sensitivity endpoint.
 
 ## Cohort
 
@@ -114,18 +116,25 @@ Condition-specific fitted positive-component fractions are:
 | dGAP 0-60 min | 26.58% |
 | dGAP 60-180 min | 23.01% |
 
-For Fig. 6h, frozen spine-level posterior membership probabilities are averaged
-within FOV. These FOV means are compared by the same parametric-bootstrap
-structure as the continuous endpoint. The mixture parameters and individual
-posterior probabilities are held fixed during this comparison; this is not a
-mixture refit inside every bootstrap replicate.
+For the condition-independent sensitivity analysis in Fig. 6h, spine-level
+posterior scores are recalculated with a common prior mixture fraction
+(`pi = 0.241672`) and averaged within FOV. These FOV means are compared by the
+same heteroscedastic Normal parametric-bootstrap structure as the continuous
+endpoint, including the mouse random intercept. Bootstrap samples are generated
+at the FOV level. Individual spine responses are not regenerated from the
+mixture distribution, and the mixture parameters and posterior scores are held
+fixed rather than refitted inside every replicate.
+
+The Fig. 6h bars show the condition-specific model-estimated fractions listed
+above; the significance annotations report the separate common-prior
+posterior-score sensitivity analysis.
 
 | Contrast | P |
 | --- | ---: |
-| SynC before vs 0-60 min | 1.0 x 10^-4 |
-| SynC 60-180 vs 0-60 min | 1.0 x 10^-4 |
-| dGAP before vs 0-60 min | 0.5854 |
-| dGAP 0-60 vs 60-180 min | 0.9039 |
+| SynC before vs 0-60 min | 0.0049 |
+| SynC 60-180 vs 0-60 min | 0.0144 |
+| dGAP before vs 0-60 min | 0.7952 |
+| dGAP 0-60 vs 60-180 min | 0.8823 |
 
 The selected Extended Data Fig. 10 uses one-percentile percentograms. Bin
 widths vary so that each bin contains approximately equal numbers of points;
