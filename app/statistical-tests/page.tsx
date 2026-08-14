@@ -228,15 +228,17 @@ export default function StatisticalTestsPage() {
           <p className="sectionLabel">Figure 6g,h · Analysis rationale</p>
           <h2>Why two complementary analyses were used</h2>
           <p>
-            Figure 6g provides the primary, model-independent analysis of
-            response magnitude using FOV-level mean ΔV from 40 to 80 s. Because
-            the null and positive-response distributions overlap, an objective
-            binary threshold cannot be defined from the observed responses
-            alone. Figure 6h therefore complements this analysis by estimating
-            the condition-specific permissive fraction with a
-            Normal-Exponential mixture model. Thus, Figure 6g tests the average
-            response directly, whereas Figure 6h describes the model-dependent
-            heterogeneity underlying that response.
+            Figure 6g provides the primary, threshold-free analysis of response
+            magnitude using FOV-level mean ΔV from 40 to 80 s. Because the null
+            and positive-response distributions overlap, classification using
+            a single binary threshold would be sensitive to the choice of
+            threshold. Figure 6h therefore complements this analysis by using a
+            Normal-Exponential mixture model to estimate the condition-specific
+            permissive fraction and spine-level posterior permissive
+            probabilities, which were averaged within each FOV for
+            between-condition comparisons. Thus, Figure 6g tests the continuous
+            response magnitude directly, whereas Figure 6h describes the
+            model-dependent heterogeneity underlying that response.
           </p>
         </section>
 
