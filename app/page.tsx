@@ -10,9 +10,9 @@ const codeItems = [
   {
     title: "EEG analysis",
     description:
-      "Scripts used for processing and analysing electrophysiological recordings.",
-    status: "tkssawada/SynC ↗",
-    href: "https://github.com/tkssawada/SynC",
+      "Blackrock .ns2/.ns3 preprocessing and spectral analysis used for Fig. 4c, with code, a 2,000-Hz synthetic processed-signal demo, and usage notes.",
+    status: "View Fig. 4c resources →",
+    href: "/python-code#fig4c-eeg",
   },
   {
     title: "Imaging analysis",

@@ -81,7 +81,7 @@ test("server-renders the analysis resource routes", async () => {
   const cases = [
     ["/", /Rapid associative spine enlargement/],
     ["/statistical-tests", /Two-sided FOV-level parametric bootstrap/],
-    ["/python-code", /Normal-Exponential mixture audit/],
+    ["/python-code", /EEG\/EMG preprocessing and spectral analysis/],
   ];
 
   for (const [pathname, expected] of cases) {
@@ -92,6 +92,33 @@ test("server-renders the analysis resource routes", async () => {
     assert.match(html, expected);
     assert.doesNotMatch(html, /Your site is taking shape|codex-preview/);
   }
+});
+
+test("publishes the Fig. 4c EEG analysis and synthetic workflow demo", async () => {
+  const paths = [
+    "public/code/Fig4c_EEG_analysis.py",
+    "public/data/Fig4c_EEG_demo.npz",
+    "public/docs/README_Fig4c_EEG.md",
+  ];
+  await Promise.all(paths.map((path) => access(new URL(path, root))));
+
+  const [homePage, codePage, analysisCode, readme] = await Promise.all([
+    readFile(new URL("app/page.tsx", root), "utf8"),
+    readFile(new URL("app/python-code/page.tsx", root), "utf8"),
+    readFile(new URL("public/code/Fig4c_EEG_analysis.py", root), "utf8"),
+    readFile(new URL("public/docs/README_Fig4c_EEG.md", root), "utf8"),
+  ]);
+
+  assert.match(homePage, /\/python-code#fig4c-eeg/);
+  assert.doesNotMatch(homePage, /tkssawada\/SynC/);
+  assert.match(codePage, /Fig4c_EEG_analysis\.py/);
+  assert.match(codePage, /Fig4c_EEG_demo\.npz/);
+  assert.match(codePage, /2,000-Hz synthetic NPZ/);
+  assert.doesNotMatch(codePage, /tkssawada\/SynC/);
+  assert.match(analysisCode, /BlackrockIO/);
+  assert.match(analysisCode, /f\.endswith\(\("\.ns3", "\.ns2"\)\)/);
+  assert.match(readme, /raw Blackrock `\.ns2`\/`\.ns3` recordings/);
+  assert.match(readme, /synthetic demonstration data/);
 });
 
 test("publishes the frozen Fig. 6 and Extended Data Fig. 10 package", async () => {
@@ -198,6 +225,9 @@ test("emits built styles and public downloads for the Sites asset binding", asyn
 
   const requests = [
     [stylesheet, "text/css"],
+    ["/code/Fig4c_EEG_analysis.py", "text/x-python"],
+    ["/data/Fig4c_EEG_demo.npz", "application/octet-stream"],
+    ["/docs/README_Fig4c_EEG.md", "text/markdown"],
     ["/code/Fig6_FOV_parametric_bootstrap.py", "text/x-python"],
     ["/data/Fig6_ExFig10_FOV_input.csv", "text/csv"],
     ["/docs/README_Fig6_ExFig10.md", "text/markdown"],
@@ -223,6 +253,8 @@ test("emits built styles and public downloads for the Sites asset binding", asyn
 
 test("does not publish local drive or network paths", async () => {
   const paths = [
+    "public/code/Fig4c_EEG_analysis.py",
+    "public/docs/README_Fig4c_EEG.md",
     "public/code/Fig6_FOV_parametric_bootstrap.py",
     "public/code/ExFig10_mixture_audit.py",
     "public/data/Fig6_ExFig10_FOV_input.csv",

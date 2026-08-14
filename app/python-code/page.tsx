@@ -2,15 +2,42 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Statistical Python code | SynC",
+  title: "Python analysis code | SynC",
   description:
-    "Python scripts and frozen inputs for statistical analyses used in the SynC manuscript.",
+    "Python scripts, public inputs, and clearly labelled demos supporting analyses in the SynC manuscript.",
 };
 
 const scripts = [
   {
+    id: "fig4c-eeg",
+    label: "Figure 4c",
+    name: "EEG/EMG preprocessing and spectral analysis",
+    description:
+      "Processes Blackrock .ns2/.ns3 electrophysiology recordings and generates referenced EEG/EMG traces, STFT power spectra, event tables, and summary figures. The included 2,000-Hz synthetic NPZ starts at the processed-signal stage and tests STFT and figure generation; it is not manuscript source data.",
+    detailHref: "/docs/README_Fig4c_EEG.md",
+    detailLabel: "Read data and usage notes →",
+    files: [
+      {
+        name: "Fig4c_EEG_analysis.py",
+        href: "/code/Fig4c_EEG_analysis.py",
+        action: "Download Python",
+      },
+      {
+        name: "Fig4c_EEG_demo.npz",
+        href: "/data/Fig4c_EEG_demo.npz",
+        action: "Download synthetic demo",
+      },
+      {
+        name: "README_Fig4c_EEG.md",
+        href: "/docs/README_Fig4c_EEG.md",
+        action: "Download README",
+      },
+    ],
+  },
+  {
     id: "fig5-permutation",
-    methodId: "fig5-permutation",
+    detailHref: "/statistical-tests#fig5-permutation",
+    detailLabel: "Read the method description →",
     label: "Figure 5",
     name: "Paired exact sign-flip permutation test",
     description:
@@ -35,7 +62,8 @@ const scripts = [
   },
   {
     id: "fig6-bootstrap",
-    methodId: "fig6-spine-analysis",
+    detailHref: "/statistical-tests#fig6-spine-analysis",
+    detailLabel: "Read the method description →",
     label: "Figure 6g",
     name: "FOV-level parametric bootstrap",
     description:
@@ -65,7 +93,8 @@ const scripts = [
   },
   {
     id: "exfig10-mixture",
-    methodId: "fig6-spine-analysis",
+    detailHref: "/statistical-tests#fig6-spine-analysis",
+    detailLabel: "Read the method description →",
     label: "Extended Data Figure 10",
     name: "Normal-Exponential mixture audit",
     description:
@@ -116,8 +145,8 @@ export default function PythonCodePage() {
         <p className="eyebrow">Reproducible analysis</p>
         <h1>Python code and frozen source tables</h1>
         <p className="lead">
-          Downloadable analysis scripts are paired with the exact public inputs,
-          reported outputs, and method records used in the manuscript.
+          Downloadable analysis scripts are paired with exact public inputs or
+          clearly labelled workflow demos, plus their method and usage records.
         </p>
       </header>
 
@@ -130,9 +159,9 @@ export default function PythonCodePage() {
               <p>{script.description}</p>
               <a
                 className="repoLink"
-                href={`/statistical-tests#${script.methodId}`}
+                href={script.detailHref}
               >
-                Read the method description →
+                {script.detailLabel}
               </a>
             </div>
             <div className="filePanel">
@@ -150,23 +179,8 @@ export default function PythonCodePage() {
         ))}
       </section>
 
-      <section className="repositoryCallout">
-        <div>
-          <p className="sectionLabel">Repository</p>
-          <h2>EEG analysis code</h2>
-        </div>
-        <a
-          className="repoLink"
-          href="https://github.com/tkssawada/SynC"
-          target="_blank"
-          rel="noreferrer"
-        >
-          tkssawada/SynC on GitHub ↗
-        </a>
-      </section>
-
       <footer>
-        <span>SynC statistical code</span>
+        <span>SynC analysis code</span>
         <Link href="/">Back to analysis resources</Link>
       </footer>
     </main>
