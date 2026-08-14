@@ -905,7 +905,7 @@ def generate_curve_pdf(agg_by_exp_group, output_path,
                     break
 
     # layout: 4 cols
-    #   col 0-2 : curve panels (Before / After 0-30 / After 60+)
+    #   col 0-2 : curve panels (Before / After 0-50 / After 60+)
     #   col 3   : AUC summary (all time groups, linear rows only)
     n_rows       = len(metrics)
     width_ratios = [3.5, 3.5, 3.5, 2.5]
@@ -1485,8 +1485,9 @@ class App(tk.Tk):
             title="Select folder containing group JSON")
         if not folder:
             return
-        jsons = sorted(Path(folder).glob("*food*.json")) or \
-                sorted(Path(folder).glob("*.json"))
+        folder = Path(folder)
+        p = folder / "_group_analysis.json"
+        jsons = [p] if p.exists() else sorted(folder.glob("*.json"))
         if not jsons:
             messagebox.showerror("Error", "No JSON file found.")
             return

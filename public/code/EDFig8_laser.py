@@ -113,12 +113,11 @@ DEFAULT_TIME_GROUPS = TIME_GROUPS   # backwards-compatible alias
 
 
 def find_default_config() -> Optional[Path]:
-    """Locate the laser group-definition JSON inside CONFIG_DIR."""
-    if not CONFIG_DIR.is_dir():
-        return None
-    cands = sorted(CONFIG_DIR.glob("*laser*.json"))
-    if not cands:
-        cands = sorted(CONFIG_DIR.glob("*.json"))
+    """Locate the group-definition JSON inside CONFIG_DIR."""
+    p = CONFIG_DIR / "_group_analysis.json"
+    if p.exists():
+        return p
+    cands = sorted(CONFIG_DIR.glob("*.json"))
     return cands[0] if cands else None
 
 # ═══════════════════════════════════════════════════════════════
@@ -1690,6 +1689,7 @@ class AnalysisApp(tk.Tk):
     def _select_json_file(self):
         json_path_str = filedialog.askopenfilename(
             title="Select group definition JSON file",
+            initialdir=str(CONFIG_DIR),
             filetypes=[("JSON files", "*.json"), ("All files", "*.*")]
         )
         if not json_path_str:
