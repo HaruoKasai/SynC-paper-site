@@ -225,6 +225,22 @@ export default function StatisticalTestsPage() {
         </section>
 
         <section>
+          <p className="sectionLabel">Figure 6g,h · Analysis rationale</p>
+          <h2>Why two complementary analyses were used</h2>
+          <p>
+            Figure 6g provides the primary, model-independent analysis of
+            response magnitude using FOV-level mean ΔV from 40 to 80 s. Because
+            the null and positive-response distributions overlap, an objective
+            binary threshold cannot be defined from the observed responses
+            alone. Figure 6h therefore complements this analysis by estimating
+            the condition-specific permissive fraction with a
+            Normal-Exponential mixture model. Thus, Figure 6g tests the average
+            response directly, whereas Figure 6h describes the model-dependent
+            heterogeneity underlying that response.
+          </p>
+        </section>
+
+        <section>
           <p className="sectionLabel">Figure 6g · Continuous endpoint</p>
           <h2>Two-sided FOV-level parametric bootstrap</h2>
           <p>
@@ -270,17 +286,16 @@ export default function StatisticalTestsPage() {
             estimated separately for each condition.
           </p>
           <p>
-            For the condition-independent sensitivity analysis in Figure 6h,
-            spine-level posterior scores were recalculated with a common prior
-            mixture fraction (π = 0.242) and averaged within FOV. The test then
-            generated FOV-level values from a heteroscedastic Normal model with
-            a mouse-level random intercept, using the same two-sided
+            Bars show condition-specific model-estimated permissive fractions
+            (πc). As a condition-independent sensitivity analysis, spine-level
+            posterior scores were recalculated with a common prior mixture
+            fraction (π = 0.242) across conditions and averaged within FOV. The
+            test then generated FOV-level values from a heteroscedastic Normal
+            model with a mouse-level random intercept, using the same two-sided
             parametric-bootstrap structure as the continuous endpoint.
-            Individual spine
-            responses were not regenerated from the mixture distribution, and
-            the mixture model and posterior scores were held fixed during the
-            bootstrap. The bars show condition-specific model-estimated
-            permissive fractions; their statistical annotations report this
+            Individual spine responses were not regenerated from the mixture
+            distribution, and the mixture model and posterior scores were held
+            fixed during the bootstrap. Statistical annotations report this
             separate common-prior sensitivity analysis.
           </p>
           <div className="resultTable" role="table" aria-label="Figure 6h P values">
