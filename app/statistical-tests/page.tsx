@@ -31,10 +31,10 @@ const deltaVResults = [
 ];
 
 const permissiveResults = [
-  ["SynC@FPC before A/C vs 0–1 h after A/C", "0.0049"],
-  ["SynC@FPC 1–3 h after A/C vs 0–1 h after A/C", "0.0144"],
-  ["SynC-dGAP@FPC before A/C vs 0–1 h after A/C", "0.7952"],
-  ["SynC-dGAP@FPC 0–1 h after A/C vs 1–3 h after A/C", "0.8823"],
+  ["SynC@FPC before A/C vs 0–1 h after A/C", "1.0 × 10⁻⁴"],
+  ["SynC@FPC 1–3 h after A/C vs 0–1 h after A/C", "1.0 × 10⁻⁴"],
+  ["SynC-dGAP@FPC before A/C vs 0–1 h after A/C", "0.5854"],
+  ["SynC-dGAP@FPC 0–1 h after A/C vs 1–3 h after A/C", "0.9039"],
 ];
 
 export default function StatisticalTestsPage() {
@@ -181,8 +181,8 @@ export default function StatisticalTestsPage() {
           <p>
             The frozen source package contains 1,088 ROI-level endpoints. The
             primary continuous endpoint is the mean volume change from 40 to
-            80 s after stimulation. For Figure 6g and the Figure 6h sensitivity
-            analysis, FOVs, rather than individual spines, are equally weighted
+            80 s after stimulation. For Figure 6g and the Figure 6h posterior
+            comparison, FOVs, rather than individual spines, are equally weighted
             in the group summaries and bootstrap model.
           </p>
           <div className="methodGrid">
@@ -276,7 +276,7 @@ export default function StatisticalTestsPage() {
 
         <section>
           <p className="sectionLabel">Figure 6h · Permissive fraction</p>
-          <h2>Normal-Exponential mixture and common-prior posterior comparison</h2>
+          <h2>Normal-Exponential mixture and fixed-posterior comparison</h2>
           <p>
             A zero-centred Normal null distribution was estimated from all
             pooled neighbouring spines (σ = 9.374%). The positive latent
@@ -286,18 +286,17 @@ export default function StatisticalTestsPage() {
             estimated separately for each condition.
           </p>
           <p>
-            Bars show condition-specific model-estimated permissive fractions
-            (πc). As a condition-independent sensitivity analysis, spine-level
-            posterior scores were recalculated with a common prior mixture
-            fraction (π = 0.242) across conditions and averaged within FOV. The
-            test then generated FOV-level values from a heteroscedastic Normal
-            model with a mouse-level random intercept, using the same two-sided
-            parametric-bootstrap structure as the continuous endpoint.
-            Individual spine responses were not regenerated from the mixture
-            distribution, and the mixture model and posterior scores were held
-            fixed during the bootstrap. Statistical annotations report this
-            separate common-prior sensitivity analysis.
+            Spine-level posterior permissive probabilities were calculated
+            using the fitted condition-specific mixture fractions and averaged
+            within each FOV. Between-condition differences in FOV-mean
+            posterior scores were assessed by parametric bootstrap, with a
+            mouse-level random intercept and with the fitted mixture parameters
+            and posterior probabilities held fixed during resampling. Bars show
+            the condition-specific model-estimated mixture fractions; the
+            statistical comparisons use their corresponding FOV-mean posterior
+            scores and are not direct tests of the displayed mixture fractions.
           </p>
+          <h3>FOV-mean posterior-score comparisons</h3>
           <div className="resultTable" role="table" aria-label="Figure 6h P values">
             <div className="resultRow resultRowTwo resultHeader" role="row">
               <span role="columnheader">Contrast</span>

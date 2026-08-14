@@ -26,8 +26,8 @@ Original mouse, FOV, and spine labels are replaced by stable opaque aliases.
 These aliases preserve the mouse/FOV/spine hierarchy across files, but the
 private correspondence table is not distributed. Endpoint values,
 condition-specific posterior probabilities, and group mixture fractions are
-unchanged. The Fig. 6h FOV table additionally contains the documented
-common-prior posterior-score sensitivity endpoint.
+unchanged. The Fig. 6h FOV table contains the within-FOV means of those frozen
+condition-specific posterior probabilities.
 
 ## Cohort
 
@@ -117,25 +117,23 @@ Condition-specific fitted positive-component fractions are:
 | SynC-dGAP@FPC 0–1 h after A/C | 26.58% |
 | SynC-dGAP@FPC 1–3 h after A/C | 23.01% |
 
-For the condition-independent sensitivity analysis in Fig. 6h, spine-level
-posterior scores are recalculated with a common prior mixture fraction
-(`pi = 0.241672`) and averaged within FOV. These FOV means are compared by the
-same heteroscedastic Normal parametric-bootstrap structure as the continuous
-endpoint, including the mouse random intercept. Bootstrap samples are generated
-at the FOV level. Individual spine responses are not regenerated from the
-mixture distribution, and the mixture parameters and posterior scores are held
-fixed rather than refitted inside every replicate.
-
-The Fig. 6h bars show the condition-specific model-estimated fractions listed
-above; the significance annotations report the separate common-prior
-posterior-score sensitivity analysis.
+Spine-level posterior permissive probabilities are calculated using the fitted
+condition-specific mixture fractions and averaged within each FOV. These FOV
+means are compared by the same heteroscedastic Normal parametric-bootstrap
+structure as the continuous endpoint, including the mouse random intercept.
+Bootstrap samples are generated at the FOV level. Individual spine responses
+are not regenerated from the mixture distribution, and the fitted mixture
+parameters and posterior probabilities are held fixed during resampling. The
+Fig. 6h bars show the condition-specific model-estimated fractions listed
+above; statistical comparisons use their corresponding FOV-mean posterior
+scores and are not direct tests of the displayed mixture fractions.
 
 | Contrast | P |
 | --- | ---: |
-| SynC@FPC before A/C vs 0–1 h after A/C | 0.0049 |
-| SynC@FPC 1–3 h after A/C vs 0–1 h after A/C | 0.0144 |
-| SynC-dGAP@FPC before A/C vs 0–1 h after A/C | 0.7952 |
-| SynC-dGAP@FPC 0–1 h after A/C vs 1–3 h after A/C | 0.8823 |
+| SynC@FPC before A/C vs 0–1 h after A/C | 1.0 × 10^-4 |
+| SynC@FPC 1–3 h after A/C vs 0–1 h after A/C | 1.0 × 10^-4 |
+| SynC-dGAP@FPC before A/C vs 0–1 h after A/C | 0.5854 |
+| SynC-dGAP@FPC 0–1 h after A/C vs 1–3 h after A/C | 0.9039 |
 
 The selected Extended Data Fig. 10 uses one-percentile percentograms. Bin
 widths vary so that each bin contains approximately equal numbers of points;
@@ -156,7 +154,8 @@ condition-specific mixture fractions.
 
 ## Public files
 
-- `Fig6_ExFig10_FOV_input.csv`: one stimulated-spine summary row per FOV.
+- `Fig6_ExFig10_FOV_input.csv`: one stimulated-spine summary row per FOV,
+  including the mean fixed condition-specific posterior score.
 - `Fig6_ExFig10_spine_input.csv`: path-sanitised frozen ROI endpoint table.
 - `Fig6_ExFig10_cohort_counts.csv`: role/group cohort counts.
 - `Fig6_ExFig10_mixture_parameters.csv`: frozen joint model parameters.

@@ -147,7 +147,7 @@ test("publishes the frozen Fig. 6 and Extended Data Fig. 10 package", async () =
 
   assert.equal(
     fovCsv.split(/\r?\n/, 1)[0],
-    "group,mouse_id,fov_id,n_spines,mean_delta_v_40_80_percent,permissive_fraction",
+    "group,mouse_id,fov_id,n_spines,mean_delta_v_40_80_percent,fov_mean_posterior_score",
   );
   assert.equal(
     spineCsv.split(/\r?\n/, 1)[0],
@@ -166,29 +166,53 @@ test("publishes the frozen Fig. 6 and Extended Data Fig. 10 package", async () =
   assert.match(testCsv, /0\.0058994100589941/);
   assert.match(testCsv, /0\.762023797620238/);
   assert.match(testCsv, /0\.48135186481351866/);
-  assert.match(testCsv, /0\.004899510048995101/);
-  assert.match(testCsv, /0\.0143985601439856/);
-  assert.match(testCsv, /0\.7952204779522047/);
-  assert.match(testCsv, /0\.8823117688231177/);
+  const reportedTests = new Map(
+    parseSimpleCsv(testCsv).map((row) => [row.contrast_id, row]),
+  );
+  assert.equal(reportedTests.get("sync_before_vs_0_60")?.display_p, "9.999000099990002e-05");
+  assert.equal(reportedTests.get("sync_0_60_vs_60_180")?.display_p, "9.999000099990002e-05");
+  assert.equal(reportedTests.get("dgap_before_vs_0_60")?.display_p, "0.5854414558544145");
+  assert.equal(reportedTests.get("dgap_0_60_vs_60_180")?.display_p, "0.9039096090390961");
+  assert.equal(reportedTests.get("sync_before_vs_0_60")?.metric, "fov_mean_posterior_score");
   assert.doesNotMatch(testCsv, /wt_vs_sync_before/);
   assert.doesNotMatch(testCsv, /sync_before_vs_60_180/);
   assert.match(methodsPage, /mouse-level random intercept/);
-  assert.match(methodsPage, /For Figure 6g and the Figure 6h sensitivity/);
+  assert.match(methodsPage, /For Figure 6g and the Figure 6h posterior/);
   assert.match(methodsPage, /SynC@FPC before A\/C vs 0–1 h after A\/C/);
   assert.match(methodsPage, /SynC-dGAP@FPC before A\/C vs 0–1 h after A\/C/);
   assert.doesNotMatch(methodsPage, /parametric-\s+bootstrap/);
-  assert.match(
-    methodsPage,
-    /Individual spine\s+responses were not regenerated/,
-  );
+  assert.match(methodsPage, /condition-specific mixture fractions and averaged/);
+  assert.match(methodsPage, /held fixed during resampling/);
+  assert.match(methodsPage, /not direct tests of the displayed mixture fractions/);
   assert.match(methodsPage, /Percentograms are used only for visualisation/);
   assert.doesNotMatch(methodsPage, /WT versus SynC -A\/C uses/);
   assert.doesNotMatch(methodsPage, /0\.3810|0\.1905/);
   assert.match(codePage, /Fig6_FOV_parametric_bootstrap\.py/);
   assert.match(parameters, /pi_WT/);
-  assert.match(parameters, /common_pi_sensitivity/);
+  assert.doesNotMatch(parameters, /common_pi_sensitivity/);
+  assert.doesNotMatch(methodsPage, /common[- ]prior|π = 0\.242/i);
+  assert.doesNotMatch(methodsReadme, /common[- ]prior|pi = 0\.241672/i);
   assert.match(methodsReadme, /WT rows and the frozen `pi_WT` parameter remain/);
   assert.doesNotMatch(methodsReadme, /100,000|0\.0517/);
+
+  const fovRows = parseSimpleCsv(fovCsv);
+  const stimRows = parseSimpleCsv(spineCsv).filter((row) => row.role === "stim");
+  const posteriorByFov = new Map();
+  for (const row of stimRows) {
+    const current = posteriorByFov.get(row.fov_id) ?? { sum: 0, count: 0 };
+    current.sum += Number(row.posterior_permissive);
+    current.count += 1;
+    posteriorByFov.set(row.fov_id, current);
+  }
+  for (const row of fovRows) {
+    const aggregate = posteriorByFov.get(row.fov_id);
+    assert.ok(aggregate, `missing stimulated spines for ${row.fov_id}`);
+    assert.equal(Number(row.n_spines), aggregate.count);
+    assert.ok(
+      Math.abs(Number(row.fov_mean_posterior_score) - aggregate.sum / aggregate.count) < 1e-12,
+      `posterior mean mismatch for ${row.fov_id}`,
+    );
+  }
 });
 
 test("publishes only stable opaque analysis identifiers", async () => {
