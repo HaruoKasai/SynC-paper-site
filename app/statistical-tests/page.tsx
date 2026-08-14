@@ -8,29 +8,33 @@ export const metadata: Metadata = {
 };
 
 const deltaVResults = [
-  ["SynC -A/C vs +A/C 0-60 min", "0.0488", "Primary, unadjusted"],
   [
-    "SynC +A/C 60-180 min vs +A/C 0-60 min",
+    "SynC@FPC before A/C vs 0–1 h after A/C",
+    "0.0488",
+    "Primary, unadjusted",
+  ],
+  [
+    "SynC@FPC 1–3 h after A/C vs 0–1 h after A/C",
     "0.0059",
     "Secondary, unadjusted",
   ],
   [
-    "dGAP -A/C vs +A/C 0-60 min",
+    "SynC-dGAP@FPC before A/C vs 0–1 h after A/C",
     "0.7620",
     "Descriptive, unadjusted",
   ],
   [
-    "dGAP +A/C 60-180 min vs +A/C 0-60 min",
+    "SynC-dGAP@FPC 0–1 h after A/C vs 1–3 h after A/C",
     "0.4814",
     "Descriptive, unadjusted",
   ],
 ];
 
 const permissiveResults = [
-  ["SynC -A/C vs +A/C 0-60 min", "0.0049"],
-  ["SynC +A/C 60-180 min vs +A/C 0-60 min", "0.0144"],
-  ["dGAP -A/C vs +A/C 0-60 min", "0.7952"],
-  ["dGAP +A/C 60-180 min vs +A/C 0-60 min", "0.8823"],
+  ["SynC@FPC before A/C vs 0–1 h after A/C", "0.0049"],
+  ["SynC@FPC 1–3 h after A/C vs 0–1 h after A/C", "0.0144"],
+  ["SynC-dGAP@FPC before A/C vs 0–1 h after A/C", "0.7952"],
+  ["SynC-dGAP@FPC 0–1 h after A/C vs 1–3 h after A/C", "0.8823"],
 ];
 
 export default function StatisticalTestsPage() {
@@ -177,8 +181,9 @@ export default function StatisticalTestsPage() {
           <p>
             The frozen source package contains 1,088 ROI-level endpoints. The
             primary continuous endpoint is the mean volume change from 40 to
-            80 s after stimulation. FOVs, rather than individual spines, are
-            equally weighted in the group summaries and bootstrap model.
+            80 s after stimulation. For Figure 6g and the Figure 6h sensitivity
+            analysis, FOVs, rather than individual spines, are equally weighted
+            in the group summaries and bootstrap model.
           </p>
           <div className="methodGrid">
             <div>
@@ -231,10 +236,11 @@ export default function StatisticalTestsPage() {
             group.
           </p>
           <p>
-            The prespecified SynC -A/C versus 0-60-min contrast is the single
-            primary comparison. The recovery SynC contrast is secondary and
-            reported without multiplicity adjustment. dGAP comparisons are
-            two-sided descriptive controls.
+            The prespecified SynC@FPC before A/C versus 0–1 h after A/C
+            contrast is the single primary comparison. The recovery SynC@FPC
+            contrast is secondary and reported without multiplicity
+            adjustment. SynC-dGAP@FPC comparisons are two-sided descriptive
+            controls.
           </p>
           <div className="resultTable" role="table" aria-label="Figure 6g P values">
             <div className="resultRow resultHeader" role="row">
@@ -268,8 +274,9 @@ export default function StatisticalTestsPage() {
             spine-level posterior scores were recalculated with a common prior
             mixture fraction (π = 0.242) and averaged within FOV. The test then
             generated FOV-level values from a heteroscedastic Normal model with
-            a mouse-level random intercept, using the same two-sided parametric-
-            bootstrap structure as the continuous endpoint. Individual spine
+            a mouse-level random intercept, using the same two-sided
+            parametric-bootstrap structure as the continuous endpoint.
+            Individual spine
             responses were not regenerated from the mixture distribution, and
             the mixture model and posterior scores were held fixed during the
             bootstrap. The bars show condition-specific model-estimated

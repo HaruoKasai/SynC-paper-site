@@ -173,6 +173,10 @@ test("publishes the frozen Fig. 6 and Extended Data Fig. 10 package", async () =
   assert.doesNotMatch(testCsv, /wt_vs_sync_before/);
   assert.doesNotMatch(testCsv, /sync_before_vs_60_180/);
   assert.match(methodsPage, /mouse-level random intercept/);
+  assert.match(methodsPage, /For Figure 6g and the Figure 6h sensitivity/);
+  assert.match(methodsPage, /SynC@FPC before A\/C vs 0–1 h after A\/C/);
+  assert.match(methodsPage, /SynC-dGAP@FPC before A\/C vs 0–1 h after A\/C/);
+  assert.doesNotMatch(methodsPage, /parametric-\s+bootstrap/);
   assert.match(
     methodsPage,
     /Individual spine\s+responses were not regenerated/,

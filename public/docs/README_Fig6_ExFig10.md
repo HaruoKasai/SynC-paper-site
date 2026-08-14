@@ -34,12 +34,12 @@ common-prior posterior-score sensitivity endpoint.
 | Condition | Stimulated spines | FOVs | Mice |
 | --- | ---: | ---: | ---: |
 | WT | 82 | 24 | 2 |
-| SynC -A/C | 110 | 30 | 5 |
-| SynC +A/C 0-60 min | 55 | 16 | 5 |
-| SynC +A/C 60-180 min | 115 | 33 | 5 |
-| dGAP -A/C | 79 | 21 | 4 |
-| dGAP +A/C 0-60 min | 54 | 14 | 4 |
-| dGAP +A/C 60-180 min | 70 | 20 | 3 |
+| SynC@FPC before A/C | 110 | 30 | 5 |
+| SynC@FPC 0–1 h after A/C | 55 | 16 | 5 |
+| SynC@FPC 1–3 h after A/C | 115 | 33 | 5 |
+| SynC-dGAP@FPC before A/C | 79 | 21 | 4 |
+| SynC-dGAP@FPC 0–1 h after A/C | 54 | 14 | 4 |
+| SynC-dGAP@FPC 1–3 h after A/C | 70 | 20 | 3 |
 
 ## Image quantification and endpoint
 
@@ -58,34 +58,35 @@ testing use retained unbinned measurements.
 
 ## Figure 6g: continuous endpoint
 
-Each FOV contributes one equally weighted mean. SynC and dGAP contrasts use a
-two-sided heteroscedastic Normal parametric bootstrap of FOV means with a mouse
-random intercept. Group-specific residual SDs are estimated, so
-`heteroscedastic` does not merely refer to comparing multiple groups.
+Each FOV contributes one equally weighted mean. SynC@FPC and SynC-dGAP@FPC
+contrasts use a two-sided heteroscedastic Normal parametric bootstrap of FOV
+means with a mouse random intercept. Group-specific residual SDs are estimated,
+so `heteroscedastic` does not merely refer to comparing multiple groups.
 
 The adopted run uses 10,000 replicates and the following seeds:
 
-- SynC Delta V: `2026072801`
-- dGAP Delta V: `2026073001`
-- SynC permissive fraction: `2026072901`
-- dGAP permissive fraction: `2026073101`
+- SynC@FPC Delta V: `2026072801`
+- SynC-dGAP@FPC Delta V: `2026073001`
+- SynC@FPC permissive fraction: `2026072901`
+- SynC-dGAP@FPC permissive fraction: `2026073101`
 
 The multiplicity policy is:
 
-1. SynC before versus 0-60 min is the single prespecified primary contrast and
-   is reported without multiplicity adjustment.
-2. The SynC 60-180-min versus 0-60-min recovery contrast is secondary and is
-   reported without multiplicity adjustment.
-3. dGAP contrasts are two-sided descriptive comparisons without adjustment.
+1. SynC@FPC before A/C versus 0–1 h after A/C is the single prespecified
+   primary contrast and is reported without multiplicity adjustment.
+2. The SynC@FPC 1–3 h versus 0–1 h after A/C recovery contrast is secondary
+   and is reported without multiplicity adjustment.
+3. SynC-dGAP@FPC contrasts are two-sided descriptive comparisons without
+   adjustment.
 
 The displayed P values are:
 
 | Metric | Contrast | P |
 | --- | --- | ---: |
-| Delta V | SynC before vs 0-60 min | 0.0488 |
-| Delta V | SynC 60-180 vs 0-60 min | 0.0059 |
-| Delta V | dGAP before vs 0-60 min | 0.7620 |
-| Delta V | dGAP 0-60 vs 60-180 min | 0.4814 |
+| Delta V | SynC@FPC before A/C vs 0–1 h after A/C | 0.0488 |
+| Delta V | SynC@FPC 1–3 h after A/C vs 0–1 h after A/C | 0.0059 |
+| Delta V | SynC-dGAP@FPC before A/C vs 0–1 h after A/C | 0.7620 |
+| Delta V | SynC-dGAP@FPC 0–1 h after A/C vs 1–3 h after A/C | 0.4814 |
 
 Run the public implementation from a directory containing the Python file and
 FOV CSV:
@@ -109,12 +110,12 @@ Condition-specific fitted positive-component fractions are:
 | Condition | pi |
 | --- | ---: |
 | WT | 37.64% |
-| SynC before | 26.57% |
-| SynC 0-60 min | 4.14% |
-| SynC 60-180 min | 18.90% |
-| dGAP before | 23.69% |
-| dGAP 0-60 min | 26.58% |
-| dGAP 60-180 min | 23.01% |
+| SynC@FPC before A/C | 26.57% |
+| SynC@FPC 0–1 h after A/C | 4.14% |
+| SynC@FPC 1–3 h after A/C | 18.90% |
+| SynC-dGAP@FPC before A/C | 23.69% |
+| SynC-dGAP@FPC 0–1 h after A/C | 26.58% |
+| SynC-dGAP@FPC 1–3 h after A/C | 23.01% |
 
 For the condition-independent sensitivity analysis in Fig. 6h, spine-level
 posterior scores are recalculated with a common prior mixture fraction
@@ -131,10 +132,10 @@ posterior-score sensitivity analysis.
 
 | Contrast | P |
 | --- | ---: |
-| SynC before vs 0-60 min | 0.0049 |
-| SynC 60-180 vs 0-60 min | 0.0144 |
-| dGAP before vs 0-60 min | 0.7952 |
-| dGAP 0-60 vs 60-180 min | 0.8823 |
+| SynC@FPC before A/C vs 0–1 h after A/C | 0.0049 |
+| SynC@FPC 1–3 h after A/C vs 0–1 h after A/C | 0.0144 |
+| SynC-dGAP@FPC before A/C vs 0–1 h after A/C | 0.7952 |
+| SynC-dGAP@FPC 0–1 h after A/C vs 1–3 h after A/C | 0.8823 |
 
 The selected Extended Data Fig. 10 uses one-percentile percentograms. Bin
 widths vary so that each bin contains approximately equal numbers of points;
